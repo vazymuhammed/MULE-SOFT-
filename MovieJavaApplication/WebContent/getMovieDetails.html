@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>MOVIE DETAILS</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+   <form action="getDetails" method="POST">
+       <label for="col_name">get Movie details By</label>
+       <select name="col_name" id="col_name">
+        <option value="all">ALL</option>
+        <option value="actor">ACTOR NAME</option>
+        <option value="actress">ACTRESS NAME</option>
+        <option value="year">YEAR OF RELEASE</option>
+        <option value="director">DIRECTOR NAME</option>
+       </select>
+       <input type="submit" value="get Movies"/>
+       <br><br>
+       <label for="textbox" id="label"></label>
+       <input type="text" name="field_value" id="textbox"/>
+   </form>
+<script type="text/javascript">
+$(document).ready(function(){
+	var value;
+	$('#label').val($('#col_name option:selected').text());
+	value=$('#col_name option:selected').text();
+	if(value=="ALL"){
+		$('#textbox').hide();
+		$('#label').text("");
+	}
+	else
+    {
+		$('#textbox').show();
+    }
+	//on selecting
+	$('#col_name').on('change', function() {
+	    $('#label').text($(this).find('option:selected').text());
+	    value=$(this).find('option:selected').text();
+	    if(value=="ALL"){
+			$('#textbox').hide();
+			$('#label').text("");
+		}
+		else
+	    {
+			$('#textbox').show();
+	    }
+	});
+});
+</script>
+</body>
+</html>
